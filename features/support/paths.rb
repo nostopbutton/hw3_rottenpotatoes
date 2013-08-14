@@ -15,6 +15,14 @@ module NavigationHelpers
 
     when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
     when /^the movies page$/ then '/movies'
+    when /^the create movie page$/ then '/movies/new'
+      
+    # http://stackoverflow.com/questions/11129472/how-to-create-a-cucumber-step-definition-for-a-edit-path
+    # http://stackoverflow.com/questions/17750429/nomethoderror-undefined-method-find-by-for-activerecordrelation
+    when /^the create movie page"$/ then 
+    when /^the edit page for "(.*)"$/ then edit_movie_path(Movie.find_by_title($1))
+    when /^the details page for "(.*)"$/ then movie_path(Movie.find_by_title($1))
+    when /^the Similar Movies page for "(.*)"$/ then similar_path(Movie.find_by_title($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

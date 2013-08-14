@@ -43,3 +43,23 @@ end
 Then /I should see all of the movies/ do
   all("table#movies tr").size.should == number_of_movies+1
 end
+
+#   Then the director of "Alien" should be "Ridley Scott"
+# Then /the director of "(.*)" should be "(.*)" / do |movie, director|
+#   page.body.should =~ /#{e1}.*#{e2}/m
+# end
+
+
+Then /^the director of "(.*?)" should be "(.*?)"$/ do |movie, director|
+  # pending # express the regexp above with the code you wish you had
+  page.body.should =~ /#{movie}/m
+  
+  page.body.should =~ /#{director}/m
+  
+end
+
+# Then /^I should see "'(.*?)' has no director info"$/ do |movie|
+
+#   page.body.should =~ /#{movie}/m
+
+# end
